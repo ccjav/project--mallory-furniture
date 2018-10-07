@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
+import LogoImg from "../../images/mf-logo-black.svg";
+
 export default class Logo extends Component {
   render() {
-    return <div className="hero">logo</div>;
+    return <img src={LogoImg} />;
   }
 }

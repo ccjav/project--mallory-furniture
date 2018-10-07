@@ -3,6 +3,11 @@ import React, { Component } from "react";
 
 export default class FeaturedProducts extends Component {
   render() {
-    return <div>featured products</div>;
+    return (
+      <div>
+        <h2>Featured Products</h2>
+        <h3>Checkout some of our favorite listings</h3>
+      </div>
+    );
   }
 }
