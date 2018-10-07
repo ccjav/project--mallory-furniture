@@ -3,10 +3,12 @@ export function getProducts() {
     .then(response => response.json())
     .then(data => data);
   //checar catch
-  // .then(posts => {
-  //   return {
-  //     id: subredditId,
-  //     posts
-  //   };
-  // });
+}
+
+export function getProduct(productId) {
+  return fetch(
+    `https://mallory-furniture-admin.now.sh/api/v1/products/${productId}`
+  )
+    .then(response => response.json())
+    .then(data => data);
 }

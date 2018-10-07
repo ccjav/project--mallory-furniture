@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 
+import ProductsListItem from "../ProductsListItem";
+
 export default class FeaturedProducts extends Component {
   render() {
     const { products } = this.props;
@@ -15,7 +17,7 @@ export default class FeaturedProducts extends Component {
         <h3>Checkout some of our favorite listings</h3>
         <ul className="FeaturedProducts">
           {featuredProducts.map(product => (
-            <li>{product.item}</li>
+            <ProductsListItem key={product._id} product={product} />
           ))}
         </ul>
       </div>
