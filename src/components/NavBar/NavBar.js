@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Logo from "../Logo";
 
@@ -10,18 +10,18 @@ export default class NavBar extends Component {
         <nav>
           <ul>
             <li>
-              <Link to="/">
+              <NavLink to="/">
                 <Logo />
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink to="/about">About</NavLink>
             </li>
             <li>
-              <Link to="/terms">Terms + Conditions</Link>
+              <NavLink to="/terms">Terms + Conditions</NavLink>
             </li>
             <li>
-              <Link to="/all-products">All</Link>
+              <NavLink to="/all-products">All</NavLink>
             </li>
           </ul>
         </nav>

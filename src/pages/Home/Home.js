@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Hero from "../../components/Hero";
-import FeaturedProducts from "../../components/FeaturedProducts";
+import ProductsList from "../../components/ProductsList";
 import { getProducts } from "../../lib/api";
 
 class Home extends Component {
@@ -45,10 +45,16 @@ class Home extends Component {
 
     const products = data;
 
+    const featuredProducts = products.filter(
+      product => product.featured === true
+    );
+
     return (
       <div className="Home">
         <Hero />
-        <FeaturedProducts products={products} />
+        <h2>Featured Products</h2>
+        <h3>Checkout some of our favorite listings</h3>
+        <ProductsList products={featuredProducts} />
       </div>
     );
   }
