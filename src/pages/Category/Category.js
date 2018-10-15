@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { browserHistory } from "react-router";
 
 import { getProducts } from "../../lib/api";
 import ProductsList from "../../components/ProductsList";
@@ -8,7 +9,7 @@ class Category extends Component {
     loading: true,
     error: null,
     searchParams: {
-      category: this.getCategory()
+      category: this.props.match.params.categoryType
     }
   };
 
@@ -17,16 +18,34 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    this.loadProducts(this.state.searchParams);
+    this.loadProducts();
+    console.log("mount");
   }
 
-  loadProducts = searchParams => {
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.searchParams.category !== this.props.match.params.categoryType
+    ) {
+      this.setState(
+        {
+          searchParams: {
+            category: this.props.match.params.categoryType
+          }
+        },
+        () => {
+          this.loadProducts();
+        }
+      );
+    }
+  }
+
+  loadProducts = () => {
     this.setState({
       loading: true,
       error: null
     });
 
-    getProducts(searchParams)
+    getProducts(this.state.searchParams)
       .then(data => {
         this.setState({
           data,
@@ -47,7 +66,7 @@ class Category extends Component {
         searchParams: { ...this.state.searchParams, onSale: true }
       },
       () => {
-        this.loadProducts(this.state.searchParams);
+        this.loadProducts();
       }
     );
   };
