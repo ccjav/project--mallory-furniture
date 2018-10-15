@@ -60,10 +60,23 @@ class Category extends Component {
       });
   };
 
-  handleClick = event => {
+  handleOnSaleClick = event => {
     this.setState(
       {
         searchParams: { ...this.state.searchParams, onSale: true }
+      },
+      () => {
+        this.loadProducts();
+      }
+    );
+  };
+
+  handleAllItemsClick = event => {
+    const { onSale, ...noOnSale } = this.state.searchParams;
+
+    this.setState(
+      {
+        searchParams: noOnSale
       },
       () => {
         this.loadProducts();
@@ -92,8 +105,8 @@ class Category extends Component {
         />
         <h2>{category}</h2>
         <h3>All {category} products</h3>
-        <button>All items</button>
-        <button onClick={this.handleClick}>On sale</button>
+        <button onClick={this.handleAllItemsClick}>All items</button>
+        <button onClick={this.handleOnSaleClick}>On sale</button>
         <ProductsList products={products} />
       </div>
     );
