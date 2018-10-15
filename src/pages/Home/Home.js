@@ -50,12 +50,19 @@ class Home extends Component {
     );
 
     return (
-      <div className="Home">
+      <>
         <Hero />
         <h2>Featured Products</h2>
         <h3>Checkout some of our favorite listings</h3>
         <ProductsList products={featuredProducts} />
-      </div>
+        <div>
+          <button type="button" class="btn btn-outline-danger">
+            All products
+          </button>
+        </div>
+        <h2>Browse by categories</h2>
+        <h3>Explore by furniture type.</h3>
+      </>
     );
   }
 }
