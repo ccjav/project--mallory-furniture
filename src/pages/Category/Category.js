@@ -72,11 +72,11 @@ class Category extends Component {
   };
 
   handleAllItemsClick = event => {
-    const { onSale, ...noOnSale } = this.state.searchParams;
+    const { onSale, ...withoutOnSaleParam } = this.state.searchParams;
 
     this.setState(
       {
-        searchParams: noOnSale
+        searchParams: withoutOnSaleParam
       },
       () => {
         this.loadProducts();
