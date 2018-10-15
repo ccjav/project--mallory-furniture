@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { browserHistory } from "react-router";
 
 import { getProducts } from "../../lib/api";
 import ProductsList from "../../components/ProductsList";
@@ -19,7 +18,6 @@ class Category extends Component {
 
   componentDidMount() {
     this.loadProducts();
-    console.log("mount");
   }
 
   componentDidUpdate(prevProps, prevState) {
