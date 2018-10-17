@@ -4,7 +4,6 @@ import "./CartItem.css";
 
 export default class CartItem extends Component {
   handleOnClick = event => {
-    console.log(event.target);
     console.log(this.props.product);
   };
 
@@ -13,8 +12,8 @@ export default class CartItem extends Component {
     return (
       <li className="products-list-item">
         {/*<Link to={`/product/${product._id}`}>*/}
-        <button onClick={this.handleOnClick}>X</button>
         <figure className="card">
+          <button onClick={this.handleOnClick}>X</button>
           <img
             className="card-img-top"
             src={product.imageLink}
