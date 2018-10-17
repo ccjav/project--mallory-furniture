@@ -53,11 +53,20 @@ export default class Product extends Component {
 
     return (
       <div className="Product">
-        <img src={product.imageLink} alt={product.item} />
-        <div>
-          <h1>{product.item}</h1>
+        <div class="row">
+          <div class="col-sm">
+            <img src={product.imageLink} alt={product.item} />
+          </div>
+          <div class="col-sm">
+            <h1>{product.item}</h1>
+            <h2>${product.price.toFixed(2)}</h2>
+            <p>Condition: {product.condition}</p>
+            <p>
+              Measurements: Length: {product.length}, height: {product.height}
+            </p>
+            <button onClick={this.handleAddToCart}>Add to Cart</button>
+          </div>
         </div>
-        <button onClick={this.handleAddToCart}>Add to Cart</button>
       </div>
     );
   }

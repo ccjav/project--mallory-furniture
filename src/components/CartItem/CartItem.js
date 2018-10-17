@@ -5,15 +5,17 @@ import "./CartItem.css";
 export default class CartItem extends Component {
   handleOnClick = event => {
     console.log(this.props.product);
+    this.props.deleteCartItem(this.props.product);
   };
 
   render() {
     const { product } = this.props;
     return (
-      <li className="products-list-item">
-        {/*<Link to={`/product/${product._id}`}>*/}
+      <li className="cart-item">
         <figure className="card">
-          <button onClick={this.handleOnClick}>X</button>
+          <span className="close-button" onClick={this.handleOnClick}>
+            X
+          </span>
           <img
             className="card-img-top"
             src={product.imageLink}
@@ -21,10 +23,9 @@ export default class CartItem extends Component {
           />
           <div className="card-body">
             <figcaption className="card-title">{product.item}</figcaption>
-            <p className="card-subtitle">{product.price}</p>
+            <p className="card-subtitle">${product.price.toFixed(2)}</p>
           </div>
         </figure>
-        {/*</Link>*/}
       </li>
     );
   }

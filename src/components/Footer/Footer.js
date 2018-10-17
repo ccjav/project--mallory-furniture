@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Footer extends Component {
   render() {
@@ -7,61 +7,39 @@ export default class Footer extends Component {
       <footer className="page-footer font-small blue pt-4">
         <div className="container-fluid text-center text-md-left">
           <div className="row">
-            <div className="col-md-6 mt-md-0 mt-3">
-              <h5 className="text-uppercase">Footer Content</h5>
-              <p>
-                Here you can use rows and columns here to organize your footer
-                content.
-              </p>
-            </div>
-
             <div className="col-md-3 mb-md-0 mb-3">
-              <h5 className="text-uppercase">Links</h5>
+              <h5 className="text-uppercase">Company</h5>
 
               <ul className="list-unstyled">
                 <li>
-                  <a href="#!">Link 1</a>
+                  <Link to="/about">About</Link>
                 </li>
+
                 <li>
-                  <a href="#!">Link 2</a>
-                </li>
-                <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
+                  <Link to="/terms">Terms + conditions</Link>
                 </li>
               </ul>
             </div>
 
             <div className="col-md-3 mb-md-0 mb-3">
-              <h5 className="text-uppercase">Links</h5>
+              <h5 className="text-uppercase">Catogories</h5>
 
               <ul className="list-unstyled">
                 <li>
-                  <a href="#!">Link 1</a>
+                  <Link to="/category/seating">Seating</Link>
                 </li>
                 <li>
-                  <a href="#!">Link 2</a>
+                  <Link to="/category/tables">Tables</Link>
                 </li>
                 <li>
-                  <a href="#!">Link 3</a>
-                </li>
-                <li>
-                  <a href="#!">Link 4</a>
+                  <Link to="/category/miscellaneous">Misc</Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="footer-copyright text-center py-3">
-          © 2018 Copyright:
-          <a href="https://mdbootstrap.com/bootstrap-tutorial/">
-            {" "}
-            MDBootstrap.com
-          </a>
-        </div>
+        <div className="footer-copyright text-center py-3">© 2018</div>
       </footer>
     );
   }

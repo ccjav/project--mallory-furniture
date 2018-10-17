@@ -7,6 +7,7 @@ class AllProducts extends Component {
   state = {
     loading: true,
     error: null,
+    selectedMaxPrice: 10000,
     searchParams: {}
   };
 
@@ -51,7 +52,8 @@ class AllProducts extends Component {
 
     this.setState(
       {
-        searchParams: withoutParams
+        searchParams: withoutParams,
+        selectedMaxPrice: 10000
       },
       () => {
         this.loadProducts();
@@ -82,6 +84,10 @@ class AllProducts extends Component {
     );
   };
 
+  handleSliderChange = event => {
+    this.setState({ selectedMaxPrice: event.target.value });
+  };
+
   render() {
     const { loading, error, data } = this.state;
 
@@ -92,18 +98,34 @@ class AllProducts extends Component {
     const condition = !!this.state.searchParams.condition
       ? this.state.searchParams.condition
       : "";
-    const products = data;
+
+    const products = data.filter(
+      product => product.price <= this.state.selectedMaxPrice
+    );
 
     return (
       <div className="AllProducts">
         <button onClick={this.handleAllItemsClick}>All items</button>
         <button onClick={this.handleOnSaleClick}>On sale</button>
+        <span>Quality</span>
         <select onChange={this.handleQualitySelect} value={condition}>
           <option value="">Any</option>
           <option value="average">Average</option>
           <option value="good">Good</option>
           <option value="excellent">Excellent</option>
         </select>
+        <span>Max price: ${this.state.selectedMaxPrice.toFixed(2)}</span>
+        <input
+          id="typeinp"
+          type="range"
+          min="0"
+          max="10000"
+          value={this.state.selectedMaxPrice}
+          onChange={this.handleSliderChange}
+          step="20"
+        />
+
+        <p>{products.length} items showing</p>
         <ProductsList products={products} />
       </div>
     );

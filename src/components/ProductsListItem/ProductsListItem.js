@@ -16,7 +16,7 @@ export default class ProductsListItem extends Component {
             />
             <div className="card-body">
               <figcaption className="card-title">{product.item}</figcaption>
-              <p className="card-subtitle">{product.price}</p>
+              <p className="card-subtitle">${product.price.toFixed(2)}</p>
             </div>
           </figure>
         </Link>

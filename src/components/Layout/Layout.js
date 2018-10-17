@@ -6,17 +6,29 @@ import Footer from "../Footer";
 import Cart from "../Cart";
 
 export default class Layout extends Component {
-	render() {
-		return (
-			<>
-				<NavBar showCart={this.props.showCart} />
-				{this.props.isCartVisible ? (
-					<Cart cart={this.props.cart} />
-				) : null}
+  handleDeleteCartItem = product => {
+    console.log("desde layout");
+    console.log(product);
+    this.props.deleteCartItem(product);
+    // this.setState({
+    //   showCart: !this.state.showCart
+    // });
+  };
 
-				{this.props.children}
-				<Footer />
-			</>
-		);
-	}
+  render() {
+    return (
+      <>
+        <NavBar showCart={this.props.showCart} />
+        {this.props.isCartVisible ? (
+          <Cart
+            cart={this.props.cart}
+            deleteCartItem={this.handleDeleteCartItem}
+          />
+        ) : null}
+
+        {this.props.children}
+        <Footer />
+      </>
+    );
+  }
 }

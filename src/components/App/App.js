@@ -26,6 +26,13 @@ class App extends Component {
       showCart: !this.state.showCart
     });
   };
+  handleDeleteCartItem = product => {
+    const cartSet = this.state.cart;
+    cartSet.delete(product);
+    this.setState({
+      cart: cartSet
+    });
+  };
 
   render() {
     return (
@@ -34,6 +41,7 @@ class App extends Component {
           cart={this.state.cart}
           showCart={this.handleShowCart}
           isCartVisible={this.state.showCart}
+          deleteCartItem={this.handleDeleteCartItem}
         >
           <Switch>
             <Route exact path="/" component={Home} />

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import Hero from "../../components/Hero";
 import ProductsList from "../../components/ProductsList";
@@ -56,12 +57,36 @@ class Home extends Component {
         <h3>Checkout some of our favorite listings</h3>
         <ProductsList products={featuredProducts} />
         <div>
-          <button type="button" class="btn btn-outline-danger">
-            All products
-          </button>
+          <Link className="btn btn-outline-danger" to="/all-products">
+            All Products
+          </Link>
         </div>
         <h2>Browse by categories</h2>
         <h3>Explore by furniture type.</h3>
+
+        <Link className="btn btn-outline-primary" to="/category/seating">
+          Seating
+        </Link>
+
+        <Link className="btn btn-outline-primary" to="/category/tables">
+          Tables
+        </Link>
+
+        <Link className="btn btn-outline-primary" to="/category/desks">
+          Desks
+        </Link>
+
+        <Link className="btn btn-outline-primary" to="/category/storage">
+          Storage
+        </Link>
+
+        <Link className="btn btn-outline-primary" to="/category/bedroom">
+          Bedroom
+        </Link>
+
+        <Link className="btn btn-outline-primary" to="/category/miscellaneous">
+          Misc
+        </Link>
       </>
     );
   }
