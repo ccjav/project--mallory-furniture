@@ -47,11 +47,34 @@ class AllProducts extends Component {
   };
 
   handleAllItemsClick = event => {
-    const { onSale, ...withoutOnSaleParam } = this.state.searchParams;
+    const { onSale, condition, ...withoutParams } = this.state.searchParams;
 
     this.setState(
       {
-        searchParams: withoutOnSaleParam
+        searchParams: withoutParams
+      },
+      () => {
+        this.loadProducts();
+      }
+    );
+  };
+
+  handleQualitySelect = event => {
+    const chosenCondition = event.target.value;
+    let newSearchParams;
+
+    if (chosenCondition === "") {
+      let { condition, ...newSearchParams } = this.state.searchParams;
+    } else {
+      newSearchParams = {
+        ...this.state.searchParams,
+        condition: chosenCondition
+      };
+    }
+
+    this.setState(
+      {
+        searchParams: { ...newSearchParams }
       },
       () => {
         this.loadProducts();
@@ -66,11 +89,21 @@ class AllProducts extends Component {
       return "loading";
     }
 
+    const condition = !!this.state.searchParams.condition
+      ? this.state.searchParams.condition
+      : "";
     const products = data;
+
     return (
       <div className="AllProducts">
         <button onClick={this.handleAllItemsClick}>All items</button>
         <button onClick={this.handleOnSaleClick}>On sale</button>
+        <select onChange={this.handleQualitySelect} value={condition}>
+          <option value="">Any</option>
+          <option value="average">Average</option>
+          <option value="good">Good</option>
+          <option value="excellent">Excellent</option>
+        </select>
         <ProductsList products={products} />
       </div>
     );

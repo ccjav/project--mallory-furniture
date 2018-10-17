@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 import Logo from "../Logo";
 
 export default class NavBar extends Component {
+  handleShowCart = () => {
+    this.props.showCart();
+  };
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -54,9 +58,12 @@ export default class NavBar extends Component {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/category/misc">
+            <NavLink className="nav-link" to="/category/miscellaneous">
               Misc
             </NavLink>
+          </li>
+          <li className="nav-item">
+            <button onClick={this.handleShowCart}>Cart</button>
           </li>
         </ul>
       </nav>

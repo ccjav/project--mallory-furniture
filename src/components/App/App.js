@@ -10,16 +10,46 @@ import Product from "../../pages/Product";
 import Category from "../../pages/Category";
 
 class App extends Component {
+  state = {
+    cart: new Set(),
+    showCart: false
+  };
+
+  handleAddProductToCart = product => {
+    this.setState(({ cart }) => ({
+      cart: new Set(cart.add(product))
+    }));
+  };
+
+  handleShowCart = () => {
+    this.setState({
+      showCart: !this.state.showCart
+    });
+  };
+
   render() {
     return (
       <div className="App">
-        <Layout>
+        <Layout
+          cart={this.state.cart}
+          showCart={this.handleShowCart}
+          isCartVisible={this.state.showCart}
+        >
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/all-products" component={AllProducts} />
-            <Route exact path="/product/:productId" component={Product} />
+            <Route
+              exact
+              path="/product/:productId"
+              render={props => (
+                <Product
+                  {...props}
+                  addProductToCart={this.handleAddProductToCart}
+                />
+              )}
+            />
             <Route exact path="/category/:categoryType" component={Category} />
           </Switch>
         </Layout>

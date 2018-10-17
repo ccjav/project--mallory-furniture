@@ -36,6 +36,10 @@ export default class Product extends Component {
       });
   };
 
+  handleAddToCart = () => {
+    this.props.addProductToCart(this.state.product);
+  };
+
   render() {
     const { product, loading, error } = this.state;
 
@@ -53,6 +57,7 @@ export default class Product extends Component {
         <div>
           <h1>{product.item}</h1>
         </div>
+        <button onClick={this.handleAddToCart}>Add to Cart</button>
       </div>
     );
   }
